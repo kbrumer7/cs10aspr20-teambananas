@@ -1,0 +1,26 @@
+{% extends "fancylayout.html" %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h2>Currency Converter</h2>
+  </div>
+  <h4>Convert your currency!</h4>
+  <form action="/results">
+    What is the country of your currency? <input type="text" name="current_currency">
+    <br>
+    How much of the currency do you have? <input type="text" name="current_amount">
+    <br>
+    What country's currency would you like to convert it to? <input type="text" name="goal_currency">
+    <br>
+    <input type="submit" class="btn btn-lg btn-danger">
+  </form>
+  <p>Current currency:</p>
+  {{state['current_currency']}}
+  <p>Current amount:</p>
+  {{state['current_amount']}}
+  <p>Converting to:</p>
+  {{state['goal_currency']}}
+  <h4>Final amount:</h4>
+  {{state['final_amount']}}
+
+{% endblock %}
