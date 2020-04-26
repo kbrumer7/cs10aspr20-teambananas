@@ -5,7 +5,7 @@
     <h2>Currency Converter</h2>
   </div>
   <h4>Convert your currency!</h4>
-  <form action="/results">
+  <form method="post" action="/results">
     What is the country of your currency? <input type="text" name="current_currency">
     <br>
     How much of the currency do you have? <input type="text" name="current_amount">
@@ -14,13 +14,12 @@
     <br>
     <input type="submit" class="btn btn-lg btn-danger">
   </form>
-  <p>Current currency:</p>
-  {{state['current_currency']}}
-  <p>Current amount:</p>
-  {{state['current_amount']}}
-  <p>Converting to:</p>
-  {{state['goal_currency']}}
-  <h4>Final amount:</h4>
-  {{state['final_amount']}}
+  <p>Current currency:  {{state['current_currency']}}</p>
+
+  <p>Current amount:  {{state['current_amount']}}</p>
+
+  <p>Converting to:  {{state['goal_currency']}}</p>
+
+  <h4>Final amount:  {{state['final_amount']}}</h4>
 
 {% endblock %}
