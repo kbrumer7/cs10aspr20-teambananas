@@ -3,10 +3,20 @@ from flask import Flask, render_template, request
 import app
 import json
 import requests
+import csv
 app = Flask(__name__)
 
 global state
-state = {'current_currency':"", 'current_amount':"", 'goal_currency':"", 'final_amount':""}
+state = {'current_currency':"",
+        'current_amount':"",
+        'goal_currency':"",
+        'final_amount':"",
+        'code':"",
+        'unit_dollar':"",
+        'current_dollar':"",
+        'goal_code':"",
+        'goal_unit_dollar':""
+        }
 
 @app.route('/')
 @app.route('/main')
@@ -38,7 +48,22 @@ def results():
     """take out base USD and rates"""
     currency_exchange = currency_exchange['rates']
 
-    print(currency_exchange)
+    abbreviations = list(csv.DictReader(open('abrreviations.csv','r'),delimiter=','))
+    for i in abbreviations:
+        if state['current_currency'].upper() == (i['Country']).upper() or state['current_currency'].upper() == (i['Currency'].upper()):
+            state['code'] = i['Code']
+    for a in currency_exchange:
+        if state['code'] in a:
+            state['unit_dollar']=currency_exchange[a]
+    state['current_dollar']=float(state['current_amount'])/float(state['unit_dollar'])
+    for w in abbreviations:
+        if state['goal_currency'].upper() == (w['Country']).upper() or state['goal_currency'] == (w['Currency']).upper():
+            state['goal_code'] = w['Code']
+    for b in currency_exchange:
+        if state['goal_code'] in b:
+            state['goal_unit_dollar']=currency_exchange[b]
+    state['final_amount']=float(state['goal_unit_dollar'])*float(state['current_dollar'])
+    state['final_amount']=round(state['final_amount'],4)
 
 
     return render_template('results.html',state=state)
