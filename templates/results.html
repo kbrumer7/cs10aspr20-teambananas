@@ -2,24 +2,25 @@
 
 {% block content %}
   <div class="jumbotron">
-    <h2>Currency Converter</h2>
+    <h1>Currency Converter</h1>
   </div>
-  <h4>Convert your currency!</h4>
+  <h2>Convert your currency!</h2>
   <form method="post" action="/results">
-    What is the country of your currency? <input type="text" name="current_currency">
+    <h4>What is the country of your currency? <input type="text" name="current_currency"></h4>
     <br>
-    How much of the currency do you have? <input type="text" name="current_amount">
+    <h4>How much of the currency do you have? <input type="text" name="current_amount"></h4>
     <br>
-    What country's currency would you like to convert it to? <input type="text" name="goal_currency">
+    <h4>What country's currency would you like to convert it to? <input type="text" name="goal_currency"></h4>
     <br>
-    <input type="submit" class="btn btn-lg btn-danger">
+    <input type="submit" class="btn btn-lg btn-info">
   </form>
-  <p>Current currency:  {{state['current_currency']}}</p>
+  <br>
+  <h4>Current currency:  {{state['current_currency']}}</h4>
 
-  <p>Current amount:  {{state['current_amount']}}</p>
+  <h4>Current amount:  {{state['current_amount']}}</h4>
 
-  <p>Converting to:  {{state['goal_currency']}}</p>
+  <h4>Converting to:  {{state['goal_currency']}}</h4>
 
-  <h4>Final amount:  {{state['final_amount']}}</h4>
+  <h3>Final amount:  {{state['final_amount']}}</h3>
 
 {% endblock %}
