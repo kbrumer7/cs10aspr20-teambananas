@@ -15,7 +15,9 @@ state = {'current_currency':"",
         'unit_dollar':"",
         'current_dollar':"",
         'goal_code':"",
-        'goal_unit_dollar':""
+        'goal_unit_dollar':"",
+        'final_currency':"",
+        'this_currency':""
         }
 
 @app.route('/')
@@ -52,6 +54,7 @@ def results():
     for i in abbreviations:
         if state['current_currency'].upper() == (i['Country']).upper() or state['current_currency'].upper() == (i['Currency'].upper()):
             state['code'] = i['Code']
+            state['this_currency'] = i['Currency']
     for a in currency_exchange:
         if state['code'] in a:
             state['unit_dollar']=currency_exchange[a]
@@ -59,6 +62,7 @@ def results():
     for w in abbreviations:
         if state['goal_currency'].upper() == (w['Country']).upper() or state['goal_currency'] == (w['Currency']).upper():
             state['goal_code'] = w['Code']
+            state['final_currency'] = w['Currency']
     for b in currency_exchange:
         if state['goal_code'] in b:
             state['goal_unit_dollar']=currency_exchange[b]
