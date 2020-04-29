@@ -1,0 +1,33 @@
+{% extends "fancylayout.html" %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h2>About Lily!</h2>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Majors</th>
+        <th scope="col">Minors</th>
+        <th scope="col">Cities Lived In</th>
+        <th scope="col">Class Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Applied Mathematics</td>
+        <td>Economics</td>
+        <td>Canton, MA</td>
+        <td>2022</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Business</td>
+        <td>Waltham, MA</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <img src="/static/lilypicture.jpg" alt="lily" class="img-thumbnail rounded mx-auto d-block" width="350">
+
+{% endblock %}
