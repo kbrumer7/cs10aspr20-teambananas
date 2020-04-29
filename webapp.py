@@ -25,14 +25,22 @@ state = {'current_currency':"",
 def main():
     return render_template('currencyconverter.html')
 
+@app.route('/aboutkayla')
+def aboutkayla():
+    return render_template('aboutkayla.html')
+
+@app.route('/aboutlily')
+def aboutlily():
+    return render_template('aboutlily.html')
+
+@app.route('/aboutmaddy')
+def aboutmaddy():
+    return render_template('aboutmaddy.html')
 
 @app.route('/convert')
 def convert_currency():
     global state
-
-
     return render_template('convert.html',state=state)
-
 
 @app.route('/results',methods=['GET','POST'])
 def results():
@@ -71,8 +79,6 @@ def results():
 
 
     return render_template('results.html',state=state)
-
-
 
 
 if __name__ == '__main__':
